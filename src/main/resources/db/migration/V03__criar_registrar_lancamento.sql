@@ -1,8 +1,8 @@
 CREATE TABLE LANCAMENTO(
 	codigo bigint  not null,
 	descricao varchar, 	
-	dataVencimento date,
-	dataPagamento date,
+	datavencimento date,
+	datapagamento date,
 	valor decimal(10,2),
 	observacao varchar,
 	tipo varchar,

@@ -4,7 +4,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "pessoa")
@@ -13,10 +12,8 @@ public class Pessoa {
 	@Id
 	private Long codigo_pessoa;
 	
-	@NotNull
 	private String nome;
 	
-	@NotNull
 	private boolean ativo;
 	
 	@Embedded
