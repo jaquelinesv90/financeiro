@@ -10,9 +10,17 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.financeiro.api.event.RecursoCriadoEvent;
 
+// a anotação @Component diz que é um bean gerenciado pelo Spring,ou seja,
+//o Spring instancia, configura,injeta objetos da classe em outros beans.
+
 @Component
 public class RecursoCriadoListener implements ApplicationListener<RecursoCriadoEvent>{
 
+	public RecursoCriadoListener() {
+		System.out.println("construtor chamado na inicialização do systema, Spring scaneou as classes"
+				+ "do projeto e encontrou a anotação, adicionou dentro do container(ioc container) ");
+	}
+	
 	@Override
 	public void onApplicationEvent(RecursoCriadoEvent recursoCriadoEvent) {
 		HttpServletResponse response = recursoCriadoEvent.getResponse();
