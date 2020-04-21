@@ -24,8 +24,6 @@ public class PessoaService {
 		return repository.save(pessoaSalva.get());
 	}
 
-	
-
 	public void atualizarAtivo(Long codigo, Boolean ativo) {
 		Optional<Pessoa> pessoaSalva = buscarPessoaPeloCodigo(codigo);
 		pessoaSalva.get().setAtivo(ativo);
@@ -40,5 +38,4 @@ public class PessoaService {
 		}
 		return pessoa;
 	}
-
 }

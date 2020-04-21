@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-//captura excessões
+//captura excessões genericas do projeto
 //é extendida essa exception handle porque ela contém vários métodos pré definidos que serão uteis
 // controller advice significa que ele observa toda a aplicação e intercepta para lançar a excessão
 @ControllerAdvice

@@ -4,22 +4,24 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "pessoa")
 public class Pessoa {
-	
+
 	@Id
 	private Long codigo_pessoa;
-	
+
 	private String nome;
-	
+
 	private boolean ativo;
-	
+
 	@Embedded
 	private Endereco endereco;
-	
-	
+
 	public Long getCodigo_pessoa() {
 		return codigo_pessoa;
 	}
@@ -31,15 +33,15 @@ public class Pessoa {
 	public String getNome() {
 		return nome;
 	}
-	
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public boolean getAtivo() {
 		return ativo;
 	}
-	
+
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
@@ -50,6 +52,12 @@ public class Pessoa {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	@JsonIgnore
+	@Transient
+	public boolean isInativo() {
+		return !this.ativo;
 	}
 
 	@Override
@@ -76,7 +84,4 @@ public class Pessoa {
 			return false;
 		return true;
 	}
-	
-	
-
 }

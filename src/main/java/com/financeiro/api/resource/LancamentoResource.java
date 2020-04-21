@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.financeiro.api.event.RecursoCriadoEvent;
 import com.financeiro.api.model.Lancamento;
 import com.financeiro.api.repository.LancamentoRepository;
+import com.financeiro.api.service.LancamentoService;
 
 @RestController
 @RequestMapping("/lancamentos")
@@ -31,6 +32,9 @@ public class LancamentoResource {
 	@Autowired
 	private ApplicationEventPublisher publisher;
 	
+	@Autowired
+	private LancamentoService service;
+	
 	@GetMapping
 	public List<Lancamento> listar(){
 		return repository.findAll();
@@ -38,7 +42,7 @@ public class LancamentoResource {
 	
 	@PostMapping
 	public ResponseEntity<Lancamento> criar(@Valid @RequestBody Lancamento lancamento,HttpServletResponse response){
-		Lancamento lancamentoSalvo = repository.save(lancamento);
+		Lancamento lancamentoSalvo = service.salvar(lancamento);
 		
 		publisher.publishEvent(new RecursoCriadoEvent(this,response,lancamentoSalvo.getCodigo()));
 	
