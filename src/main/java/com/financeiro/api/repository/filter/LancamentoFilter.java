@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+//os atributos da classes são os atributos que serão utilizados para pesquisa
+// poderia ser nome,id ...
 public class LancamentoFilter {
 
 	private String descricao;

@@ -45,13 +45,10 @@ public class LancamentoResource {
 	@Autowired
 	private LancamentoService service;
 	
-	@GetMapping
-	public List<Lancamento> listar(){
-		return repository.findAll();
-	}
 	
+	@GetMapping
 	public List<Lancamento> pesquisar(LancamentoFilter filter){
-		return repository.findAll();
+		return repository.filtrar(filter);
 	}
 	
 	

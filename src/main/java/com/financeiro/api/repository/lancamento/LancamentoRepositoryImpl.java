@@ -28,7 +28,7 @@ public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery{
 		CriteriaQuery<Lancamento> criteria = builder.createQuery(Lancamento.class);
 		Root<Lancamento> root = criteria.from(Lancamento.class);
 		
-		//criar as restrições
+		//criar as restrições/filtros
 		Predicate[] predicates = criarRestricoes(lancamentoFilter,builder,root);
 		criteria.where(predicates);
 		
@@ -40,21 +40,19 @@ public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery{
 	private Predicate[] criarRestricoes(LancamentoFilter lancamentoFilter,CriteriaBuilder builder, Root<Lancamento> root) {
 		List<Predicate> predicates = new ArrayList<>();
 		
-		if(StringUtils.isEmpty(lancamentoFilter.getDescricao())) {
+		if(!StringUtils.isEmpty(lancamentoFilter.getDescricao())) {
 			predicates.add(builder.like(
 					builder.lower(root.get(Lancamento_.descricao)),"%" + lancamentoFilter.getDescricao().toLowerCase() +"%" ));
 		}
 		
-		if(StringUtils.isEmpty(lancamentoFilter.getDescricao())) {
-			//predicates.add(builder.like()
-		}
-		
 		if(lancamentoFilter.getDataVencimentoDe() !=null) {
-			
+			predicates.add(
+					builder.lessThanOrEqualTo(root.get(Lancamento_.datavencimento), lancamentoFilter.getDataVencimentoDe()));
 		}
 		
 		if(lancamentoFilter.getDataVencimentoAte() != null){
-			
+			predicates.add(
+					builder.lessThanOrEqualTo(root.get(Lancamento_.datavencimento),lancamentoFilter.getDataVencimentoAte()));
 		}
 		
 		return predicates.toArray(new Predicate[predicates.size()]);
