@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -15,7 +15,9 @@ public class Categoria {
 	@Column
 	private Long codigo_categoria;
 	
-	@NotNull
+	//anotação do jakarta ee, valida se o valor não é null, nem vazio e 
+	// não contém espaços
+	@NotBlank
 	@Size(min = 3, max = 20)
 	private String  nome;
 	
