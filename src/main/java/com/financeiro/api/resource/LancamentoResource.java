@@ -86,5 +86,14 @@ public class LancamentoResource {
 		
 		return  ResponseEntity.badRequest().body(erros);
 	}
+	
+	public ResponseEntity<Lancamento> atualizar(@PathVariable Long codigo,@Valid @RequestBody Lancamento lancamento){
+		try {
+			Lancamento lancamentoSalvo = service.atualizar(codigo,lancamento);
+			return ResponseEntity.ok(lancamentoSalvo);
+		}catch(IllegalArgumentException e) {
+			return ResponseEntity.notFound().build();
+		}
+	}
 
 }
