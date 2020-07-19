@@ -17,7 +17,7 @@ import com.financeiro.api.event.RecursoCriadoEvent;
 public class RecursoCriadoListener implements ApplicationListener<RecursoCriadoEvent>{
 
 	public RecursoCriadoListener() {
-		System.out.println("construtor chamado na inicialização do systema, Spring scaneou as classes"
+		System.out.println("RecursoCriadoListener, construtor chamado na inicialização do sistema, Spring scaneou as classes"
 				+ "do projeto e encontrou a anotação, adicionou dentro do container(ioc container) ");
 	}
 	
