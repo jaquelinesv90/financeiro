@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationEvent;
 //Eventos são mensagens publicadas por algumas rotina, sem
 //saber explicitament para quem e sem aguardar resposta.
 //exemplo eventos: Usuario x logou, Novo cliente cadastrado..
+
 public class RecursoCriadoEvent extends ApplicationEvent{
 
 	private static final long serialVersionUID = 1L;
