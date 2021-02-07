@@ -34,6 +34,18 @@ public class CategoriaResource {
 	@Autowired
 	private ApplicationEventPublisher publisher;
 
+	/*
+	 * é uma entidade de resposta, o tipo de retorno não está
+	 * definido ainda 
+	@GetMapping
+	public ResponseEntity<?> listar(){
+	 		se a lista estiver vazia ele vai retornar 404 not found
+		return !categorias.isEmpty() ? ResponseEntity.ok(categorias) : ResponseEntity.notFound().build();
+		return ResponseEntity.ok(categorias);
+	}*/
+	
+	// se contém dados ele retorna a lista de categorias senão retorna uma
+	// lista vazia com 200 ok
 	@GetMapping
 	public List<Categoria> listar(){
 		return repository.findAll();
