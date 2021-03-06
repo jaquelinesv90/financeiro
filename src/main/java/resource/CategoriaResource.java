@@ -17,6 +17,8 @@ import repository.CategoriaRepository;
  * convertido para json.não é necessário adicionar anotações extras nos nossos métodos.
  * @RequestMapping - mapeamento da requisição, quando chegar uma requisição ele identifica 
  * pela url e direciona.
+ * @Autowired - quero que você encontre uma implementação de categoriaRepository e injete
+ * nesse variavel.
  */
 @RestController
 @RequestMapping("/categorias")
